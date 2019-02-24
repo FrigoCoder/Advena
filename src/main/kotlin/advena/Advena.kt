@@ -22,24 +22,24 @@ class Advena : ApplicationAdapter() {
             System.exit(-1)
         }
 
-        mesh = Mesh(true, 4, 6, VertexAttribute.Position(), VertexAttribute.ColorUnpacked(), VertexAttribute
-            .TexCoords(0))
+        mesh = Mesh(true, 4, 6, VertexAttribute.Position(), VertexAttribute.ColorUnpacked(), VertexAttribute.TexCoords(0))
         mesh.setVertices(floatArrayOf(
-            -1.0f, -1.0f, 0.0f,
-            1.0f, -1.0f, 0.0f,
-            1.0f, 1.0f, 0.0f,
-            -1.0f, 1.0f, 0.0f))
+            -0.5f, -0.5f, 0f, 1f, 1f, 1f, 1f, 0f, 1f,
+            0.5f, -0.5f, 0f, 1f, 1f, 1f, 1f, 1f,
+            1f, 0.5f, 0.5f, 0f, 1f, 1f, 1f, 1f, 1f, 0f,
+            -0.5f, 0.5f, 0f, 1f, 1f, 1f, 1f, 0f, 0f
+        ))
         mesh.setIndices(shortArrayOf(0, 1, 2, 2, 3, 0))
 
         startTime = System.currentTimeMillis()
     }
 
     override fun render() {
-        Gdx.gl.glClearColor(0f, 0f, 0f, 1f)
+        Gdx.gl.glClearColor(1f, 0f, 0f, 1f)
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
         shader.begin()
-        //shader.setUniformf("iTime", (System.currentTimeMillis() - startTime) / 1000f)
+//        shader.setUniformf("iTime", (System.currentTimeMillis() - startTime) / 1000f)
 //        shader.setUniformf("iResolution", Vector2(width.toFloat(), height.toFloat()))
         mesh.render(shader, GL20.GL_TRIANGLES)
         shader.end()
