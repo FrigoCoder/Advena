@@ -5,7 +5,7 @@ pipeline {
         timestamps()
     }
     triggers { 
-        cron("@nightly")
+        cron("@midnight")
     }
     stages {
         stage("Package") {
