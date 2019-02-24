@@ -9,8 +9,10 @@ pipeline {
     }
     stages {
         stage("Package") {
-            withMaven {
-                bat "mvn clean package"
+            steps {
+                withMaven {
+                    bat "mvn clean package"
+                }
             }
         }
     }
