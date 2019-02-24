@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Mesh
 import com.badlogic.gdx.graphics.VertexAttribute
 import com.badlogic.gdx.graphics.glutils.ShaderProgram
+import com.badlogic.gdx.math.Vector2
 import org.lwjgl.opengl.GL20
 
 class Advena : ApplicationAdapter() {
@@ -39,8 +40,8 @@ class Advena : ApplicationAdapter() {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
         shader.begin()
-//        shader.setUniformf("iTime", (System.currentTimeMillis() - startTime) / 1000f)
-//        shader.setUniformf("iResolution", Vector2(width.toFloat(), height.toFloat()))
+        shader.setUniformf("iTime", (System.currentTimeMillis() - startTime) / 1000f)
+        shader.setUniformf("iResolution", Vector2(width.toFloat(), height.toFloat()))
         mesh.render(shader, GL20.GL_TRIANGLES)
         shader.end()
     }
