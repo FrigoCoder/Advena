@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage("Package") {
             steps {
-                withMaven {
+                withMaven() {
                     bat "mvn clean package"
                 }
             }
