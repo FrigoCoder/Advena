@@ -25,10 +25,10 @@ class Advena : ApplicationAdapter() {
 
         mesh = Mesh(true, 4, 6, VertexAttribute.Position(), VertexAttribute.ColorUnpacked(), VertexAttribute.TexCoords(0))
         mesh.setVertices(floatArrayOf(
-            -0.5f, -0.5f, 0f, 1f, 1f, 1f, 1f, 0f, 1f,
-            0.5f, -0.5f, 0f, 1f, 1f, 1f, 1f, 1f,
-            1f, 0.5f, 0.5f, 0f, 1f, 1f, 1f, 1f, 1f, 0f,
-            -0.5f, 0.5f, 0f, 1f, 1f, 1f, 1f, 0f, 0f
+            -1.0f, -1.0f, 0f, 1f, 1f, 1f, 1f, 0f, 1f,
+            1.0f, -1.0f, 0f, 1f, 1f, 1f, 1f, 1f, 1f,
+            1.0f, 1.0f, 0f, 1f, 1f, 1f, 1f, 1f, 0f,
+            -1.0f, 1.0f, 0f, 1f, 1f, 1f, 1f, 0f, 0f
         ))
         mesh.setIndices(shortArrayOf(0, 1, 2, 2, 3, 0))
 
