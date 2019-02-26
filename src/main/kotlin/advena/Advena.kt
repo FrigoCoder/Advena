@@ -12,11 +12,13 @@ class Advena : ApplicationAdapter() {
 
     private lateinit var shader: ShaderProgram
     private lateinit var mesh: Mesh
+    private var iFrame: Int = 0
     private var startTime: Long = 0
     private var width: Int = 0
     private var height: Int = 0
 
     override fun create() {
+        ShaderProgram.pedantic = false
         shader = ShaderProgram(Gdx.files.internal("vertex.glsl"), Gdx.files.internal("fragment.glsl"))
         if (!shader.isCompiled) {
             System.err.println(shader.log)
@@ -37,8 +39,10 @@ class Advena : ApplicationAdapter() {
 
     override fun render() {
         shader.begin()
-        shader.setUniformf("iTime", (System.currentTimeMillis() - startTime) / 1000f)
+        shader.setUniformi("iFrame", iFrame++)
+        shader.setUniformf("iMouse", Vector2(0f, 0f))
         shader.setUniformf("iResolution", Vector2(width.toFloat(), height.toFloat()))
+        shader.setUniformf("iTime", (System.currentTimeMillis() - startTime) / 1000f)
         mesh.render(shader, GL20.GL_TRIANGLES)
         shader.end()
     }
