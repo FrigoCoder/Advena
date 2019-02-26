@@ -17,8 +17,8 @@ void main() {
 precision mediump float;
 #endif
 
-uniform vec3        iResolution;
-uniform float       iTime;
+uniform vec2 iResolution;
+uniform float iTime;
 
 // Created by inigo quilez - iq/2017
 // License Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
@@ -213,7 +213,5 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 //
 
 void main () {
-    vec4 fragColor;
-    mainImage(fragColor, gl_FragCoord);
-    gl_FragColor = fragColor;
+    mainImage(gl_FragColor, gl_FragCoord.xy);
 }
