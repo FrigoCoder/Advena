@@ -36,9 +36,6 @@ class Advena : ApplicationAdapter() {
     }
 
     override fun render() {
-        Gdx.gl.glClearColor(1f, 0f, 0f, 1f)
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
-
         shader.begin()
         shader.setUniformf("iTime", (System.currentTimeMillis() - startTime) / 1000f)
         shader.setUniformf("iResolution", Vector2(width.toFloat(), height.toFloat()))
