@@ -3,6 +3,7 @@ package advena
 import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Mesh
+import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.VertexAttribute
 import com.badlogic.gdx.graphics.glutils.ShaderProgram
 import com.badlogic.gdx.math.Vector2
@@ -33,6 +34,14 @@ class Advena : ApplicationAdapter() {
             -1.0f, 1.0f, 0f
         ))
         mesh.setIndices(shortArrayOf(0, 1, 2, 2, 3, 0))
+
+        for (i in 0..3) {
+            val file = Gdx.files.internal("iChannel$i.png")
+            if (file.exists()) {
+                Texture(file).bind(i)
+                shader.setUniformi("iChannel$i", i)
+            }
+        }
 
         startTime = System.currentTimeMillis()
     }
