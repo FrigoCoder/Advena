@@ -19,8 +19,12 @@ class Advena : ApplicationAdapter() {
     private var height: Int = 0
 
     override fun create() {
+        val header = Gdx.files.internal("header.glsl").readString()
+        val fragment = Gdx.files.internal("fragment.glsl").readString()
+        val footer = Gdx.files.internal("footer.glsl").readString()
+
         ShaderProgram.pedantic = false
-        shader = ShaderProgram(Gdx.files.internal("vertex.glsl"), Gdx.files.internal("fragment.glsl"))
+        shader = ShaderProgram(Gdx.files.internal("vertex.glsl").readString(), "$header\n$fragment\n$footer")
         if (!shader.isCompiled) {
             System.err.println(shader.log)
             System.exit(-1)
